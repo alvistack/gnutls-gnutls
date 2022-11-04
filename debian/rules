@@ -1,0 +1,50 @@
+#!/usr/bin/make -f
+
+SHELL := /bin/bash
+
+export DEB_CFLAGS_MAINT_APPEND=$(shell dpkg-buildflags --get CPPFLAGS)
+export DEB_CXXFLAGS_MAINT_APPEND=$(shell dpkg-buildflags --get CPPFLAGS)
+export DEB_LDFLAGS_MAINT_APPEND=$(shell dpkg-buildflags --get LDFLAGS) -flto=auto -Wl,-z,now -Wl,-z,relro -Wl,--as-needed -ldl
+
+override_dh_autoreconf:
+
+override_dh_auto_configure:
+	dh_auto_configure \
+		-- \
+		--disable-bash-tests \
+		--disable-doc \
+		--disable-full-test-suite \
+		--disable-gcc-warnings \
+		--disable-gtk-doc \
+		--disable-guile \
+		--disable-non-suiteb-curves \
+		--disable-rpath \
+		--disable-silent-rules \
+		--disable-static \
+		--disable-tests \
+		--enable-cxx \
+		--enable-libdane \
+		--enable-openssl-compatibility \
+		--enable-sha1-support \
+		--enable-shared \
+		--enable-ssl3-support \
+		--with-brotli \
+		--with-default-trust-store-file=/etc/ssl/certs/ca-certificates.crt \
+		--with-default-trust-store-pkcs11="pkcs11:" \
+		--with-unbound-root-key-file=/usr/share/dns/root.key \
+		--with-zlib \
+		--with-zstd \
+		--without-tpm
+
+override_dh_auto_install:
+	dh_auto_install --destdir=debian/tmp
+	rm -rf debian/tmp/usr/share/locale
+	find debian/tmp -type f -name '*.la' -exec rm -rf {} \;
+	find debian/tmp -type f -name '*.so.*' -exec chrpath -d {} \;
+
+override_dh_auto_test:
+
+override_dh_auto_clean:
+
+%:
+	dh $@

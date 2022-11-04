@@ -1,0 +1,130 @@
+Source: gnutls
+Section: libs
+Priority: optional
+Standards-Version: 4.5.0
+Maintainer: Wong Hoi Sing Edison <hswong3i@gmail.com>
+Homepage: https://github.com/gnutls/gnutls/tags
+Vcs-Browser: https://github.com/alvistack/gnutls-gnutls
+Vcs-Git: https://github.com/alvistack/gnutls-gnutls.git
+Build-Depends:
+ debhelper,
+ debhelper-compat (= 10),
+ autoconf,
+ autogen,
+ automake,
+ autopoint,
+ bison,
+ ca-certificates,
+ chrpath,
+ dns-root-data,
+ gawk,
+ gettext,
+ gperf,
+ gtk-doc-tools,
+ guile-2.2-dev | guile-3.0-dev,
+ libbrotli-dev,
+ libidn2-dev,
+ libp11-kit-dev (>= 0.23.1),
+ libssl-dev,
+ libtasn1-6-dev (>= 4.9),
+ libtasn1-bin,
+ libtool,
+ libunbound-dev (>= 1.5.10),
+ libunistring-dev,
+ libzstd-dev,
+ nettle-dev (>= 3.4.1),
+ openssl,
+ python3-dev,
+ texinfo (>= 4.8),
+ zlib1g-dev,
+
+Package: libgnutls28-dev
+Section: libdevel
+Architecture: any
+Description: GNU TLS library - development files
+ This package contains the GnuTLS development files.
+Depends:
+ ${misc:Depends},
+ ${shlibs:Depends},
+ libbrotli-dev,
+ libc6-dev | libc-dev,
+ libgnutls-dane0 (= ${source:Version}),
+ libgnutls-openssl27 (= ${source:Version}),
+ libgnutls30 (= ${source:Version}),
+ libgnutlsxx28 (= ${source:Version}),
+ libidn2-dev,
+ libp11-kit-dev (>= 0.23.1),
+ libtasn1-6-dev,
+ libzstd-dev,
+ nettle-dev (>= 3.4.1),
+ zlib1g-dev,
+Provides:
+ gnutls-dev,
+ libgnutls-openssl-dev,
+Suggests:
+ gnutls-bin,
+ gnutls-doc,
+Conflicts:
+ gnutls-dev,
+Replaces:
+ gnutls-dev,
+
+Package: libgnutls30
+Architecture: any
+Description: GNU TLS library - main runtime library
+ This package contains the main runtime library.
+Pre-Depends:
+ ${misc:Pre-Depends},
+Depends:
+ ${misc:Depends},
+ ${shlibs:Depends},
+Suggests:
+ gnutls-bin,
+
+Package: gnutls-bin
+Section: net
+Architecture: any
+Description: GNU TLS library - commandline utilities
+ This package contains a commandline interface to the GNU TLS library,
+ which can be used to set up secure connections from e.g. shell scripts,
+ debugging connection issues or managing certificates.
+Depends:
+ ${misc:Depends},
+ ${shlibs:Depends},
+ libgnutls-dane0 (= ${source:Version}),
+ libgnutls-openssl27 (= ${source:Version}),
+ libgnutls30 (= ${source:Version}),
+ libgnutlsxx28 (= ${source:Version}),
+
+Package: libgnutlsxx28
+Architecture: any
+Description: GNU TLS library - C++ runtime library
+ This package contains the C++ runtime libraries.
+Pre-Depends:
+ ${misc:Pre-Depends},
+Depends:
+ ${misc:Depends},
+ ${shlibs:Depends},
+
+Package: libgnutls-openssl27
+Architecture: any
+Description: GNU TLS library - OpenSSL wrapper
+ This package contains the runtime library of the GnuTLS OpenSSL wrapper.
+Pre-Depends:
+ ${misc:Pre-Depends},
+Depends:
+ ${misc:Depends},
+ ${shlibs:Depends},
+
+Package: libgnutls-dane0
+Architecture: any
+Description: GNU TLS library - DANE security support
+ This package contains the runtime library for DANE (DNS-based
+ Authentication of Named Entities) support.
+Pre-Depends:
+ ${misc:Pre-Depends},
+Depends:
+ ${misc:Depends},
+ ${shlibs:Depends},
+Suggests:
+ dns-root-data,
