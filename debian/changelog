@@ -1,0 +1,5 @@
+gnutls (100:3.7.8-1) UNRELEASED; urgency=medium
+
+  * https://github.com/gnutls/gnutls/releases/tag/3.7.8
+
+ -- Wong Hoi Sing Edison <hswong3i@gmail.com>  Sun, 16 Oct 2022 19:33:26 +0800

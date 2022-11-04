@@ -1,0 +1,12 @@
+*.substvars
+*debhelper*
+.debhelper
+autoreconf.*
+files
+gnutls-bin
+libgnutls-dane0
+libgnutls-openssl27
+libgnutls28-dev
+libgnutls30
+libgnutlsxx30
+tmp

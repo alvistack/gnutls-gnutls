@@ -1,0 +1,6 @@
+gnutls source: file-without-copyright-information
+gnutls source: no-debian-changes
+gnutls source: not-binnmuable-any-depends-any
+gnutls source: source-contains-prebuilt-windows-binary
+gnutls source: source-is-missing
+gnutls source: weak-library-dev-dependency

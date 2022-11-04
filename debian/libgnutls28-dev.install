@@ -1,0 +1,4 @@
+usr/include/*
+usr/lib/*/libgnutls*.so
+usr/lib/*/pkgconfig/gnutls-dane.pc
+usr/lib/*/pkgconfig/gnutls.pc
